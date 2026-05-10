@@ -1,0 +1,1029 @@
+<!doctype html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>For Swaggy 🌸</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;600;700&family=Poppins:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+      :root {
+        --bg-color: #fff0f5; /* Lavender Blush */
+        --primary-pink: #f472b6; /* Tailwind pink-400 */
+        --deep-pink: #9d174d; /* Tailwind pink-900 */
+        --soft-pink: #fce7f3; /* Tailwind pink-100 */
+      }
+
+      body {
+        font-family: "Poppins", sans-serif;
+        background: linear-gradient(135deg, #fff0f5 0%, #ffe4e1 100%);
+        color: var(--deep-pink);
+        overflow-x: hidden;
+        background-attachment: fixed;
+      }
+
+      .font-handwriting {
+        font-family: "Caveat", cursive;
+      }
+
+      /* Light Glassmorphism */
+      .glass-pink {
+        background: rgba(255, 255, 255, 0.6);
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
+        border: 1px solid rgba(255, 255, 255, 0.8);
+        box-shadow: 0 10px 30px rgba(244, 114, 182, 0.15);
+      }
+
+      .glass-white {
+        background: rgba(255, 255, 255, 0.85);
+        backdrop-filter: blur(12px);
+        border: 1px solid rgba(255, 255, 255, 0.5);
+        box-shadow: 0 8px 32px rgba(251, 113, 133, 0.1);
+      }
+
+      /* Cute Glowing Effects */
+      .text-glow-pink {
+        text-shadow: 0 4px 15px rgba(244, 114, 182, 0.4);
+      }
+
+      .btn-cute {
+        background: linear-gradient(45deg, #f472b6, #fb7185);
+        box-shadow: 0 4px 15px rgba(244, 114, 182, 0.4);
+        transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        color: white;
+      }
+      .btn-cute:hover {
+        box-shadow: 0 8px 25px rgba(244, 114, 182, 0.6);
+        transform: translateY(-3px) scale(1.02);
+      }
+
+      /* Floating Hearts & Flowers Particles */
+      #particles {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        pointer-events: none;
+        z-index: -1;
+        overflow: hidden;
+      }
+
+      .particle {
+        position: absolute;
+        bottom: -10vh;
+        animation: floatUp linear infinite;
+        opacity: 0.6;
+        font-size: 20px;
+        filter: drop-shadow(0 0 5px rgba(244, 114, 182, 0.3));
+      }
+
+      @keyframes floatUp {
+        0% {
+          transform: translateY(0) rotate(0deg) scale(0.8);
+          opacity: 0;
+        }
+        10% {
+          opacity: 0.8;
+        }
+        90% {
+          opacity: 0.8;
+        }
+        100% {
+          transform: translateY(-110vh) rotate(360deg) scale(1.2);
+          opacity: 0;
+        }
+      }
+
+      /* Scroll Animations */
+      .reveal {
+        opacity: 0;
+        transform: translateY(30px);
+        transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
+      }
+      .reveal.active {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      /* Chat Bubbles (Light Theme) */
+      .chat-left {
+        transform-origin: bottom left;
+        animation: popIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+      }
+      .chat-right {
+        transform-origin: bottom right;
+        animation: popIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+      }
+
+      @keyframes popIn {
+        0% {
+          opacity: 0;
+          transform: scale(0.8) translateY(20px);
+        }
+        100% {
+          opacity: 1;
+          transform: scale(1) translateY(0);
+        }
+      }
+
+      /* Polaroids */
+      .polaroid {
+        background: #ffffff;
+        padding: 8px 8px 35px 8px;
+        box-shadow: 0 10px 20px rgba(244, 114, 182, 0.15);
+        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        position: relative;
+        border-radius: 8px;
+        break-inside: avoid;
+        margin-bottom: 1.5rem;
+        border: 1px solid rgba(252, 231, 243, 1);
+      }
+      .polaroid img {
+        width: 100%;
+        height: auto;
+        border-radius: 6px;
+        object-fit: cover;
+        transition: transform 0.4s ease;
+      }
+      .polaroid:hover {
+        transform: scale(1.05) rotate(0deg) !important;
+        box-shadow: 0 15px 35px rgba(244, 114, 182, 0.3);
+        z-index: 10;
+      }
+      .polaroid:hover img {
+        transform: scale(1.02);
+      }
+
+      /* Handwritten Letter */
+      .letter-paper {
+        background-color: #fff9fb;
+        background-image:
+          linear-gradient(
+            90deg,
+            transparent 40px,
+            #fbcfe8 40px,
+            #fbcfe8 42px,
+            transparent 42px
+          ),
+          linear-gradient(#fce7f3 1px, transparent 1px);
+        background-size: 100% 30px;
+        color: #831843;
+        box-shadow: 0 15px 40px rgba(244, 114, 182, 0.2);
+        border-radius: 4px;
+        position: relative;
+      }
+
+      /* Custom Audio Player */
+      .audio-ctrl {
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        z-index: 100;
+        background: rgba(255, 255, 255, 0.8);
+        backdrop-filter: blur(5px);
+        border: 2px solid #fbcfe8;
+        border-radius: 50%;
+        width: 45px;
+        height: 45px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        box-shadow: 0 4px 10px rgba(244, 114, 182, 0.2);
+      }
+      .audio-ctrl:hover {
+        background: #fce7f3;
+        transform: scale(1.1);
+      }
+
+      /* Background animated blobs */
+      .blob {
+        position: absolute;
+        filter: blur(80px);
+        z-index: -1;
+        opacity: 0.5;
+        border-radius: 50%;
+        animation: moveBlob 20s infinite alternate;
+      }
+
+      @keyframes moveBlob {
+        0% {
+          transform: translate(0, 0) scale(1);
+        }
+        100% {
+          transform: translate(50px, 50px) scale(1.1);
+        }
+      }
+    </style>
+  </head>
+  <body class="antialiased">
+    <!-- Decorative Blobs -->
+    <div class="blob bg-pink-300 w-96 h-96 top-0 left-0"></div>
+    <div
+      class="blob bg-rose-200 w-96 h-96 bottom-0 right-0"
+      style="animation-delay: -5s"
+    ></div>
+    <div
+      class="blob bg-purple-200 w-80 h-80 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
+      style="animation-delay: -10s"
+    ></div>
+
+    <!-- Particle Container -->
+    <div id="particles"></div>
+
+    <!-- Hidden YouTube Player (Replaces the old audio tag) -->
+    <div id="youtube-player" style="display: none"></div>
+
+    <!-- Floating Audio Control -->
+    <div class="audio-ctrl" id="audio-btn" onclick="toggleAudio()">
+      <i
+        data-lucide="music-4"
+        id="audio-icon"
+        class="text-pink-500 w-5 h-5"
+      ></i>
+    </div>
+
+    <!-- SECTION 1: Landing -->
+    <section
+      id="hero"
+      class="min-h-screen flex flex-col items-center justify-center relative px-4 text-center"
+    >
+      <div
+        class="z-10 space-y-8 glass-pink p-10 md:p-16 rounded-[3rem] max-w-3xl mx-auto w-full"
+      >
+        <h1
+          class="text-5xl md:text-7xl font-semibold tracking-wide text-rose-900 text-glow-pink opacity-0 translate-y-4 transition-all duration-1000"
+          id="intro-1"
+        >
+          Dear Swaggy
+          <span class="text-pink-500 font-handwriting text-6xl">💜</span>
+        </h1>
+
+        <p
+          class="text-xl md:text-3xl text-rose-800 font-medium opacity-0 translate-y-4 transition-all duration-1000 delay-1000"
+          id="intro-2"
+        >
+          Aap gussa thi... <br />
+          <span class="text-pink-600 mt-2 inline-block"
+            >Aur iss baar galti meri thi 🥺</span
+          >
+        </p>
+
+        <div class="pt-8">
+          <button
+            onclick="startJourney()"
+            class="btn-cute mt-8 px-10 py-4 rounded-full text-lg tracking-wide opacity-0 transition-all duration-1000 delay-[2000ms] font-semibold flex items-center justify-center mx-auto gap-2"
+            id="intro-btn"
+          >
+            Please ek baar sun lijiye...
+            <i data-lucide="heart" class="w-5 h-5 fill-current"></i>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 2: What I Realized -->
+    <section
+      id="realizations"
+      class="py-24 px-4 min-h-screen flex flex-col items-center justify-center"
+    >
+      <div class="max-w-4xl w-full space-y-10">
+        <div
+          class="reveal glass-white p-8 rounded-3xl relative overflow-hidden"
+        >
+          <div
+            class="absolute -right-4 -top-4 text-pink-200 opacity-30 text-9xl font-serif"
+          >
+            "
+          </div>
+          <p
+            class="text-xl md:text-2xl font-medium text-rose-900 leading-relaxed relative z-10"
+          >
+            Mujhe laga words bas words hote hain...<br />
+            Par jis insaan ko hum matter karte hain, <br />
+            <span class="text-pink-600"
+              >uske liye wahi words darr ban jaate hain.</span
+            >
+          </p>
+        </div>
+
+        <div
+          class="reveal glass-white p-8 rounded-3xl ml-auto md:w-3/4 relative overflow-hidden"
+        >
+          <div
+            class="absolute -right-4 -top-4 text-pink-200 opacity-30 text-9xl font-serif"
+          >
+            "
+          </div>
+          <p
+            class="text-xl md:text-2xl font-medium text-rose-900 leading-relaxed relative z-10"
+          >
+            Aapka gussa actually
+            <span class="text-pink-600 font-bold border-b-2 border-pink-300"
+              >care</span
+            >
+            tha... 🎀
+          </p>
+        </div>
+
+        <div
+          class="reveal glass-white p-8 rounded-3xl md:w-3/4 relative overflow-hidden"
+        >
+          <div
+            class="absolute -right-4 -top-4 text-pink-200 opacity-30 text-9xl font-serif"
+          >
+            "
+          </div>
+          <p
+            class="text-xl md:text-2xl font-medium text-rose-900 leading-relaxed relative z-10"
+          >
+            Jab aapne kaha — <br />
+            <span class="italic text-pink-700 bg-pink-50 px-2 py-1 rounded-md"
+              >'Aap aisa mat bolo'</span
+            ><br />
+            Tab samjha ki koi sach me meri fikr karta hai. 💖
+          </p>
+        </div>
+
+        <div
+          class="reveal glass-white p-8 rounded-3xl ml-auto md:w-2/3 text-right relative overflow-hidden"
+        >
+          <p
+            class="text-xl md:text-2xl font-medium text-rose-900 leading-relaxed relative z-10"
+          >
+            Aapka 'Pagal Ladka' sach me pagal hi nikla... 🤦‍♂️
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 3: Chat Memories -->
+    <section
+      class="py-24 px-4 min-h-screen relative flex items-center justify-center"
+    >
+      <div
+        class="max-w-2xl w-full glass-pink rounded-[2.5rem] p-6 md:p-10 shadow-xl space-y-6"
+      >
+        <div class="text-center mb-10 flex flex-col items-center">
+          <div class="bg-white p-3 rounded-full shadow-md mb-3">
+            <img
+              src="https://i.ibb.co/KcHNZryS/Snapchat-2124109479.jpg"
+              class="w-16 h-16 rounded-full object-cover"
+              alt="Swaggy Profile"
+            />
+          </div>
+          <p class="text-lg font-semibold text-rose-900">Swaggy 💜</p>
+          <p class="text-xs text-pink-500 font-medium">Online</p>
+        </div>
+
+        <!-- Swaggy -->
+        <div class="reveal flex flex-col items-start w-full mb-6">
+          <div
+            class="bg-white text-gray-800 px-5 py-3.5 rounded-2xl rounded-tl-none max-w-[85%] shadow-sm border border-pink-100 font-medium"
+          >
+            Ab aap baat mat karna mujhe se
+          </div>
+        </div>
+
+        <!-- Me -->
+        <div class="reveal flex flex-col items-end w-full mb-6 delay-100">
+          <div
+            class="bg-pink-500 text-white px-5 py-3.5 rounded-2xl rounded-tr-none max-w-[85%] shadow-md font-medium"
+          >
+            Please 🥺
+          </div>
+        </div>
+
+        <!-- Swaggy -->
+        <div class="reveal flex flex-col items-start w-full mb-6 delay-200">
+          <div
+            class="bg-white text-gray-800 px-5 py-3.5 rounded-2xl rounded-tl-none max-w-[85%] shadow-sm border border-pink-100 font-medium"
+          >
+            Aise bolne ko man kiya tha maine fir bhi...
+          </div>
+        </div>
+
+        <!-- Me -->
+        <div class="reveal flex flex-col items-end w-full mb-6 delay-300">
+          <div
+            class="bg-pink-500 text-white px-5 py-3.5 rounded-2xl rounded-tr-none max-w-[85%] shadow-md font-medium"
+          >
+            Daat lijiye...<br />Par aisa mat kijiye.
+          </div>
+        </div>
+
+        <!-- Swaggy -->
+        <div class="reveal flex flex-col items-start w-full mb-6 delay-400">
+          <div
+            class="bg-white text-gray-800 px-5 py-3.5 rounded-2xl rounded-tl-none max-w-[85%] shadow-sm border border-pink-100 font-medium"
+          >
+            Nhi mai aise hi bolo ge 😠
+          </div>
+        </div>
+
+        <!-- Me -->
+        <div class="reveal flex flex-col items-end w-full mb-6 delay-500">
+          <div
+            class="bg-pink-500 text-white px-5 py-3.5 rounded-2xl rounded-tr-none max-w-[85%] shadow-md font-medium"
+          >
+            But aisa mat boliye please 🙏😭
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 4: Poetry & Shayari -->
+    <section
+      class="py-32 px-4 min-h-screen flex items-center justify-center text-center relative"
+    >
+      <div class="max-w-3xl space-y-16 z-10 glass-white p-12 rounded-[3rem]">
+        <h2
+          class="reveal text-3xl md:text-4xl font-semibold text-pink-600 mb-8 flex items-center justify-center gap-3"
+        >
+          <i data-lucide="sparkles" class="w-8 h-8 text-pink-400"></i>
+          Kuch Baatein...
+          <i data-lucide="sparkles" class="w-8 h-8 text-pink-400"></i>
+        </h2>
+
+        <p
+          class="reveal text-xl md:text-2xl font-medium italic text-rose-800 leading-relaxed"
+        >
+          "Har baar mazaak me boli hui baatein mazaak nahi hoti...<br />
+          Kuch log daantte hain...
+          <span class="text-pink-500">Kyuki unhe farak padta hai.</span>"
+        </p>
+
+        <p
+          class="reveal text-xl md:text-2xl font-medium italic text-rose-800 leading-relaxed"
+        >
+          "Aapka 'chup raho' bhi care jaisa laga...<br />
+          Galti meri thi Swaggy... <br />
+          <span class="text-pink-500"
+            >Par friendship humari bohot precious hai.</span
+          >"
+        </p>
+
+        <div
+          class="reveal mt-12 bg-pink-50 p-6 rounded-2xl border border-pink-200"
+        >
+          <p
+            class="text-2xl md:text-3xl font-semibold text-rose-900 leading-relaxed text-glow-pink"
+          >
+            "Mai shayad overthink karta hu...<br />
+            <span class="text-pink-600">Par aap over-care karti ho.</span>" 🌸
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 5: Handwritten Letter -->
+    <section class="py-24 px-4 min-h-screen flex items-center justify-center">
+      <div
+        class="reveal max-w-2xl w-full letter-paper p-8 md:p-14 transform -rotate-2 hover:rotate-0 transition-transform duration-500"
+      >
+        <!-- Cute Tape graphic -->
+        <div
+          class="absolute -top-4 left-1/2 transform -translate-x-1/2 w-32 h-8 bg-white/60 backdrop-blur-sm shadow-sm rotate-1"
+        ></div>
+
+        <h3
+          class="font-handwriting text-4xl md:text-5xl text-rose-900 mb-8 font-bold flex items-center gap-2"
+        >
+          Dear Swaggy <span class="text-pink-500">💜</span>
+        </h3>
+
+        <div
+          class="font-handwriting text-2xl md:text-3xl text-rose-800 leading-relaxed space-y-6 font-semibold"
+        >
+          <p>
+            I know I messed up. Saying things like "Hmko nhi rehna iss gola pe"
+            was stupid and extremely insensitive. I didn't realize how much
+            those words would hurt you until I saw your reaction.
+          </p>
+
+          <p>
+            When you told me to stop talking to you, it honestly scared me. It
+            made me realize that my words carry weight, and that someone
+            actually genuinely cares about my existence.
+          </p>
+
+          <p>
+            I am so sorry for making you upset. I promise I'll be more mindful
+            and I won't say such things again. Thank you for scolding me, and
+            thank you for being the kind of friend who gets angry because they
+            care.
+          </p>
+
+          <p class="text-pink-700">
+            You matter a lot to me. Please don't be mad anymore. 🥺
+          </p>
+        </div>
+
+        <div
+          class="font-handwriting text-3xl md:text-4xl text-rose-900 mt-12 text-right font-bold"
+        >
+          <p>Yours truly,</p>
+          <p class="mt-2 text-pink-600">Kaushal (Aapka Pagal Ladka) ✨</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 6: Photo Gallery (Masonry Layout) -->
+    <section
+      class="py-24 px-4 min-h-screen flex flex-col items-center justify-center"
+    >
+      <div
+        class="text-center mb-16 reveal glass-pink py-6 px-12 rounded-full inline-block"
+      >
+        <h2 class="text-4xl font-semibold text-rose-900">Glimpses of Us</h2>
+        <p class="text-pink-600 mt-2 font-medium text-lg">
+          The most beautiful girl, my Swaggy 💜
+        </p>
+      </div>
+
+      <div
+        class="columns-2 md:columns-3 lg:columns-4 gap-4 md:gap-6 max-w-7xl px-4 w-full"
+      >
+        <!-- Photo 1 -->
+        <div class="reveal polaroid transform -rotate-2">
+          <img
+            src="https://i.ibb.co/KcHNZryS/Snapchat-2124109479.jpg"
+            alt="Swaggy"
+          />
+          <p
+            class="font-handwriting text-2xl text-center text-rose-900 mt-3 font-bold"
+          >
+            Swaggy ✨
+          </p>
+        </div>
+        <!-- Photo 2 -->
+        <div class="reveal polaroid transform rotate-3">
+          <img
+            src="https://i.ibb.co/FqNyJRcC/Snapchat-1419857438.jpg"
+            alt="Swaggy"
+          />
+          <p
+            class="font-handwriting text-2xl text-center text-rose-900 mt-3 font-bold"
+          >
+            Cute 🥺
+          </p>
+        </div>
+        <!-- Photo 3 -->
+        <div class="reveal polaroid transform -rotate-1">
+          <img
+            src="https://i.ibb.co/bgxqJ8mv/Snapchat-581044635.jpg"
+            alt="Swaggy"
+          />
+          <p
+            class="font-handwriting text-2xl text-center text-rose-900 mt-3 font-bold"
+          >
+            Precious 💎
+          </p>
+        </div>
+        <!-- Photo 4 -->
+        <div class="reveal polaroid transform rotate-2">
+          <img
+            src="https://i.ibb.co/DfzxNq4S/Snapchat-504382178.jpg"
+            alt="Swaggy"
+          />
+          <p
+            class="font-handwriting text-2xl text-center text-rose-900 mt-3 font-bold"
+          >
+            My Fav 🌸
+          </p>
+        </div>
+        <!-- Photo 5 -->
+        <div class="reveal polaroid transform -rotate-3 mt-4">
+          <img
+            src="https://i.ibb.co/s9BJYG2y/Snapchat-181548882.jpg"
+            alt="Swaggy"
+          />
+          <p
+            class="font-handwriting text-2xl text-center text-rose-900 mt-3 font-bold"
+          >
+            Always 🤍
+          </p>
+        </div>
+        <!-- Photo 6 -->
+        <div class="reveal polaroid transform rotate-1">
+          <img
+            src="https://i.ibb.co/NdKy7b9X/Snapchat-709496083.jpg"
+            alt="Swaggy"
+          />
+          <p
+            class="font-handwriting text-2xl text-center text-rose-900 mt-3 font-bold"
+          >
+            Smile 😊
+          </p>
+        </div>
+        <!-- Photo 7 -->
+        <div class="reveal polaroid transform -rotate-2 mt-2">
+          <img
+            src="https://i.ibb.co/QFnx2B0d/Snapchat-1583444382.jpg"
+            alt="Swaggy"
+          />
+          <p
+            class="font-handwriting text-2xl text-center text-rose-900 mt-3 font-bold"
+          >
+            Beautiful 🎀
+          </p>
+        </div>
+        <!-- Photo 8 -->
+        <div class="reveal polaroid transform rotate-3">
+          <img
+            src="https://i.ibb.co/W4fYrP9v/Snapchat-563544877.jpg"
+            alt="Swaggy"
+          />
+          <p
+            class="font-handwriting text-2xl text-center text-rose-900 mt-3 font-bold"
+          >
+            Memories 💫
+          </p>
+        </div>
+        <!-- Photo 9 -->
+        <div class="reveal polaroid transform -rotate-1 mt-4">
+          <img
+            src="https://i.ibb.co/JRm58F7P/Snapchat-791600956.jpg"
+            alt="Swaggy"
+          />
+          <p
+            class="font-handwriting text-2xl text-center text-rose-900 mt-3 font-bold"
+          >
+            The Best 🌟
+          </p>
+        </div>
+        <!-- Photo 10 -->
+        <div class="reveal polaroid transform rotate-2">
+          <img
+            src="https://i.ibb.co/23Mv5YgM/Snapchat-388442880.jpg"
+            alt="Swaggy"
+          />
+          <p
+            class="font-handwriting text-2xl text-center text-rose-900 mt-3 font-bold"
+          >
+            Adorable 💖
+          </p>
+        </div>
+        <!-- Photo 11 -->
+        <div class="reveal polaroid transform -rotate-2">
+          <img
+            src="https://i.ibb.co/Y7gccSNm/Snapchat-1311246967.jpg"
+            alt="Swaggy"
+          />
+          <p
+            class="font-handwriting text-2xl text-center text-rose-900 mt-3 font-bold"
+          >
+            Miss this 🦋
+          </p>
+        </div>
+        <!-- Photo 12 -->
+        <div class="reveal polaroid transform rotate-1 mt-2">
+          <img
+            src="https://i.ibb.co/3y4zzKky/Snapchat-1731239758.jpg"
+            alt="Swaggy"
+          />
+          <p
+            class="font-handwriting text-2xl text-center text-rose-900 mt-3 font-bold"
+          >
+            Vibes ✨
+          </p>
+        </div>
+        <!-- Photo 13 -->
+        <div class="reveal polaroid transform -rotate-3">
+          <img
+            src="https://i.ibb.co/LzsSSYwN/Snapchat-362039725.jpg"
+            alt="Swaggy"
+          />
+          <p
+            class="font-handwriting text-2xl text-center text-rose-900 mt-3 font-bold"
+          >
+            Swaggy! 🥰
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 7: Final Emotional Ending -->
+    <section
+      id="ending"
+      class="py-24 px-4 min-h-screen flex flex-col items-center justify-center relative"
+    >
+      <div
+        class="z-10 text-center max-w-3xl space-y-12 glass-pink p-12 rounded-[3rem]"
+      >
+        <p
+          class="reveal text-3xl md:text-5xl font-semibold text-rose-900 leading-tight"
+        >
+          "Some people become habit...<br />
+          <span class="text-pink-500 font-bold mt-4 inline-block"
+            >But you became comfort.</span
+          >" 🎀
+        </p>
+
+        <p
+          class="reveal text-2xl md:text-3xl text-rose-800 mt-12 delay-300 font-medium"
+        >
+          Please gussa thoda kam kar dijiye na, Swaggy 💜
+        </p>
+
+        <div
+          class="reveal flex flex-col sm:flex-row gap-6 justify-center mt-16 delay-500"
+        >
+          <button
+            onclick="handleAccept()"
+            class="btn-cute px-10 py-4 rounded-full font-bold text-lg flex items-center justify-center gap-2"
+          >
+            Theek hai 🙂
+            <i data-lucide="heart" class="w-5 h-5 fill-current"></i>
+          </button>
+          <button
+            onclick="handleReject()"
+            class="px-10 py-4 rounded-full bg-white text-rose-500 border-2 border-pink-200 font-bold text-lg hover:bg-pink-50 transition-all shadow-sm"
+          >
+            Still Angry 😤
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer
+      class="py-8 text-center text-rose-600 font-medium text-sm glass-white mt-10"
+    >
+      <p>
+        Made with genuine care, regret, and lots of friendship for my Swaggy 💜
+        by Kaushal.
+      </p>
+    </footer>
+
+    <!-- Modals -->
+    <div
+      id="modal-accept"
+      class="fixed inset-0 z-50 hidden items-center justify-center bg-white/60 backdrop-blur-md"
+    >
+      <div
+        class="bg-white p-10 rounded-[3rem] text-center max-w-md mx-4 transform scale-90 transition-transform duration-300 shadow-2xl border-2 border-pink-100"
+        id="modal-accept-content"
+      >
+        <div class="text-7xl mb-6">🎉💖🥰</div>
+        <h3 class="text-3xl font-bold text-rose-900 mb-3">Yayyy!</h3>
+        <p class="text-rose-700 text-lg font-medium">
+          Friendship restored successfully.<br />Thank you for forgiving this
+          idiot.
+        </p>
+        <button
+          onclick="closeModal('modal-accept')"
+          class="mt-8 btn-cute px-8 py-3 rounded-full w-full"
+        >
+          Yayy! 🌸
+        </button>
+      </div>
+    </div>
+
+    <div
+      id="modal-reject"
+      class="fixed inset-0 z-50 hidden items-center justify-center bg-white/60 backdrop-blur-md"
+    >
+      <div
+        class="bg-white p-10 rounded-[3rem] text-center max-w-md mx-4 shadow-2xl border-2 border-pink-100 transform scale-90 transition-transform duration-300"
+        id="modal-reject-content"
+      >
+        <div class="text-7xl mb-6">😭💔</div>
+        <h3 class="text-3xl font-bold text-rose-900 mb-3">Understood.</h3>
+        <p class="text-rose-700 text-lg font-medium">
+          Retrying apology in 5 business days...<br /><span class="text-sm"
+            >(Just kidding, I'll keep trying until you smile).</span
+          >
+        </p>
+        <button
+          onclick="closeModal('modal-reject')"
+          class="mt-8 px-8 py-3 bg-gray-100 text-gray-700 rounded-full hover:bg-gray-200 transition-colors w-full font-bold"
+        >
+          Okay 😔
+        </button>
+      </div>
+    </div>
+
+    <script>
+      // Initialize Lucide Icons
+      lucide.createIcons();
+
+      // Cute Particle System (Hearts & Flowers)
+      function createParticles() {
+        const container = document.getElementById("particles");
+        const particleCount = 25;
+        const elements = ["🌸", "💖", "✨", "🎀", "🤍"];
+
+        for (let i = 0; i < particleCount; i++) {
+          const particle = document.createElement("div");
+          particle.classList.add("particle");
+
+          // Randomize properties
+          const element = elements[Math.floor(Math.random() * elements.length)];
+          const left = Math.random() * 100; // 0% to 100%
+          const duration = Math.random() * 10 + 8; // 8s to 18s
+          const delay = Math.random() * 5; // 0s to 5s
+          const size = Math.random() * 15 + 15; // 15px to 30px
+
+          particle.innerText = element;
+          particle.style.left = `${left}vw`;
+          particle.style.fontSize = `${size}px`;
+          particle.style.animationDuration = `${duration}s`;
+          particle.style.animationDelay = `${delay}s`;
+
+          container.appendChild(particle);
+        }
+      }
+
+      // Landing Page Animation Sequence
+      window.onload = () => {
+        createParticles();
+
+        setTimeout(() => {
+          document
+            .getElementById("intro-1")
+            .classList.remove("opacity-0", "translate-y-4");
+        }, 500);
+
+        setTimeout(() => {
+          document
+            .getElementById("intro-2")
+            .classList.remove("opacity-0", "translate-y-4");
+        }, 2000);
+
+        setTimeout(() => {
+          const btn = document.getElementById("intro-btn");
+          btn.classList.remove("opacity-0");
+          btn.classList.add("opacity-100");
+        }, 4000);
+      };
+
+      // Scroll Reveal Animation via Intersection Observer
+      const revealElements = document.querySelectorAll(".reveal");
+
+      const revealOptions = {
+        threshold: 0.15,
+        rootMargin: "0px 0px -50px 0px",
+      };
+
+      const revealObserver = new IntersectionObserver(function (
+        entries,
+        observer,
+      ) {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          entry.target.classList.add("active");
+          observer.unobserve(entry.target);
+        });
+      }, revealOptions);
+
+      revealElements.forEach((el) => {
+        revealObserver.observe(el);
+      });
+
+      // --- BACKGROUND MUSIC LOGIC (YOUTUBE API) ---
+      let player;
+      let isPlaying = false;
+      let isPlayerReady = false;
+
+      // Load YouTube IFrame API dynamically
+      const tag = document.createElement("script");
+      tag.src = "https://www.youtube.com/iframe_api";
+      const firstScriptTag = document.getElementsByTagName("script")[0];
+      firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+      // This function creates an <iframe> (and YouTube player) after the API code downloads.
+      function onYouTubeIframeAPIReady() {
+        // 👇 YAHAN APNE GAANE KI VIDEO ID DAALEIN 👇
+        // Example: Agar link https://www.youtube.com/watch?v=1bvwX5HnS9E hai, toh ID '1bvwX5HnS9E' hai
+        const videoId = "dun34KGC5JM"; // <-- Aapka diya hua song: "Khairiyat" type song
+
+        player = new YT.Player("youtube-player", {
+          height: "0",
+          width: "0",
+          videoId: videoId,
+          playerVars: {
+            autoplay: 0,
+            controls: 0,
+            disablekb: 1,
+            loop: 1,
+            playlist: videoId, // Loop kaam karne ke liye id wapas deni padti hai
+          },
+          events: {
+            onReady: onPlayerReady,
+          },
+        });
+      }
+
+      function onPlayerReady(event) {
+        isPlayerReady = true;
+        player.setVolume(60); // Volume set karein (0 se 100 ke beech)
+      }
+
+      function toggleAudio() {
+        if (!isPlayerReady) return; // Agar video load nahi hui toh wait karega
+
+        if (isPlaying) {
+          player.pauseVideo();
+          document
+            .getElementById("audio-icon")
+            .setAttribute("data-lucide", "music-4");
+          isPlaying = false;
+        } else {
+          player.playVideo();
+          document
+            .getElementById("audio-icon")
+            .setAttribute("data-lucide", "volume-2");
+          isPlaying = true;
+        }
+        lucide.createIcons(); // re-render icon
+      }
+
+      function startJourney() {
+        // Play audio if not playing
+        if (!isPlaying) {
+          toggleAudio();
+        }
+        // Scroll to next section
+        document
+          .getElementById("realizations")
+          .scrollIntoView({ behavior: "smooth" });
+      }
+
+      // Interactive Ending Buttons
+      function handleAccept() {
+        const modal = document.getElementById("modal-accept");
+        const content = document.getElementById("modal-accept-content");
+        modal.classList.remove("hidden");
+        modal.classList.add("flex");
+
+        // Small delay for scale animation
+        setTimeout(() => {
+          content.classList.remove("scale-90");
+          content.classList.add("scale-100");
+          createConfetti();
+        }, 10);
+      }
+
+      function handleReject() {
+        const modal = document.getElementById("modal-reject");
+        const content = document.getElementById("modal-reject-content");
+        modal.classList.remove("hidden");
+        modal.classList.add("flex");
+
+        setTimeout(() => {
+          content.classList.remove("scale-90");
+          content.classList.add("scale-100");
+        }, 10);
+      }
+
+      function closeModal(modalId) {
+        const modal = document.getElementById(modalId);
+        const content = document.getElementById(modalId + "-content");
+
+        content.classList.remove("scale-100");
+        content.classList.add("scale-90");
+
+        setTimeout(() => {
+          modal.classList.add("hidden");
+          modal.classList.remove("flex");
+        }, 300);
+      }
+
+      // Cute Pink Heart Confetti for Acceptance
+      function createConfetti() {
+        const confettiColors = ["💖", "🌸", "✨", "🎀"];
+        for (let i = 0; i < 40; i++) {
+          let heart = document.createElement("div");
+          heart.innerHTML =
+            confettiColors[Math.floor(Math.random() * confettiColors.length)];
+          heart.style.position = "fixed";
+          heart.style.left = Math.random() * 100 + "vw";
+          heart.style.top = "-20px";
+          heart.style.fontSize = Math.random() * 20 + 15 + "px";
+          heart.style.zIndex = "9999";
+          heart.style.transition =
+            "all 3s cubic-bezier(0.25, 0.46, 0.45, 0.94)";
+          document.body.appendChild(heart);
+
+          setTimeout(() => {
+            heart.style.top = "120vh";
+            heart.style.transform = `rotate(${Math.random() * 720}deg) translateX(${Math.random() * 100 - 50}px)`;
+          }, 50);
+
+          setTimeout(() => {
+            heart.remove();
+          }, 3050);
+        }
+      }
+    </script>
+  </body>
+</html>
