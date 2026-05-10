@@ -6,7 +6,7 @@
     <title>For Swaggy 🌸</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link
-      href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;600;700&family=Poppins:wght@300;400;500;600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500;700&family=Quicksand:wght@300;400;500;600;700&display=swap"
       rel="stylesheet"
     />
     <!-- Lucide Icons -->
@@ -20,7 +20,7 @@
       }
 
       body {
-        font-family: "Poppins", sans-serif;
+        font-family: "Quicksand", sans-serif;
         background: linear-gradient(135deg, #fff0f5 0%, #ffe4e1 100%);
         color: var(--deep-pink);
         overflow-x: hidden;
@@ -28,7 +28,8 @@
       }
 
       .font-handwriting {
-        font-family: "Caveat", cursive;
+        font-family: "Dancing Script", cursive;
+        font-size: 1.15em;
       }
 
       /* Light Glassmorphism */
@@ -133,6 +134,18 @@
         }
       }
 
+      /* Polaroids Bouncy Animation */
+      .polaroid-animate {
+        opacity: 0;
+        transform: translateY(80px) scale(0.8)
+          rotate(calc(var(--rot, 0deg) * 3));
+        transition: all 1s cubic-bezier(0.34, 1.56, 0.64, 1);
+      }
+      .polaroid-animate.active {
+        opacity: 1;
+        transform: translateY(0) scale(1) rotate(var(--rot, 0deg));
+      }
+
       /* Polaroids */
       .polaroid {
         background: #ffffff;
@@ -154,7 +167,7 @@
       }
       .polaroid:hover {
         transform: scale(1.05) rotate(0deg) !important;
-        box-shadow: 0 15px 35px rgba(244, 114, 182, 0.3);
+        box-shadow: 0 15px 35px rgba(244, 114, 182, 0.4);
         z-index: 10;
       }
       .polaroid:hover img {
@@ -244,11 +257,7 @@
 
     <!-- Floating Audio Control -->
     <div class="audio-ctrl" id="audio-btn" onclick="toggleAudio()">
-      <i
-        data-lucide="music-4"
-        id="audio-icon"
-        class="text-pink-500 w-5 h-5"
-      ></i>
+      <i data-lucide="play" class="text-pink-500 w-6 h-6"></i>
     </div>
 
     <!-- SECTION 1: Landing -->
@@ -375,7 +384,7 @@
         <div class="text-center mb-10 flex flex-col items-center">
           <div class="bg-white p-3 rounded-full shadow-md mb-3">
             <img
-              src="https://i.ibb.co/KcHNZryS/Snapchat-2124109479.jpg"
+              src="https://i.ibb.co/JRm58F7P/Snapchat-791600956.jpg"
               class="w-16 h-16 rounded-full object-cover"
               alt="Swaggy Profile"
             />
@@ -889,6 +898,28 @@
         revealObserver.observe(el);
       });
 
+      // Make Polaroids Animate Beautifully
+      document.querySelectorAll(".polaroid").forEach((el) => {
+        const rot = Math.random() * 8 - 4; // Random rotation between -4deg and 4deg
+        el.style.setProperty("--rot", `${rot}deg`);
+
+        // Remove static classes and use dynamic bouncy animation
+        el.classList.remove(
+          "reveal",
+          "transform",
+          "-rotate-1",
+          "rotate-1",
+          "-rotate-2",
+          "rotate-2",
+          "-rotate-3",
+          "rotate-3",
+          "mt-2",
+          "mt-4",
+        );
+        el.classList.add("polaroid-animate");
+        revealObserver.observe(el);
+      });
+
       // --- BACKGROUND MUSIC LOGIC (YOUTUBE API) ---
       let player;
       let isPlaying = false;
@@ -900,11 +931,8 @@
       const firstScriptTag = document.getElementsByTagName("script")[0];
       firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
-      // This function creates an <iframe> (and YouTube player) after the API code downloads.
       function onYouTubeIframeAPIReady() {
-        // 👇 YAHAN APNE GAANE KI VIDEO ID DAALEIN 👇
-        // Example: Agar link https://www.youtube.com/watch?v=1bvwX5HnS9E hai, toh ID '1bvwX5HnS9E' hai
-        const videoId = "dun34KGC5JM"; // <-- Aapka diya hua song: "Khairiyat" type song
+        const videoId = "dun34KGC5JM";
 
         player = new YT.Player("youtube-player", {
           height: "0",
@@ -915,40 +943,46 @@
             controls: 0,
             disablekb: 1,
             loop: 1,
-            playlist: videoId, // Loop kaam karne ke liye id wapas deni padti hai
+            playlist: videoId,
           },
           events: {
             onReady: onPlayerReady,
+            onStateChange: onPlayerStateChange,
           },
         });
       }
 
       function onPlayerReady(event) {
         isPlayerReady = true;
-        player.setVolume(60); // Volume set karein (0 se 100 ke beech)
+        player.setVolume(60);
+      }
+
+      // Smart Logic for Play/Pause Icon
+      function onPlayerStateChange(event) {
+        const audioBtn = document.getElementById("audio-btn");
+        if (event.data === YT.PlayerState.PLAYING) {
+          isPlaying = true;
+          audioBtn.innerHTML =
+            '<i data-lucide="pause" class="text-pink-500 w-6 h-6"></i>';
+        } else {
+          isPlaying = false;
+          audioBtn.innerHTML =
+            '<i data-lucide="play" class="text-pink-500 w-6 h-6 ml-0.5"></i>';
+        }
+        lucide.createIcons(); // Update the icon UI
       }
 
       function toggleAudio() {
-        if (!isPlayerReady) return; // Agar video load nahi hui toh wait karega
+        if (!isPlayerReady) return;
 
         if (isPlaying) {
           player.pauseVideo();
-          document
-            .getElementById("audio-icon")
-            .setAttribute("data-lucide", "music-4");
-          isPlaying = false;
         } else {
           player.playVideo();
-          document
-            .getElementById("audio-icon")
-            .setAttribute("data-lucide", "volume-2");
-          isPlaying = true;
         }
-        lucide.createIcons(); // re-render icon
       }
 
       function startJourney() {
-        // Play audio if not playing
         if (!isPlaying) {
           toggleAudio();
         }
